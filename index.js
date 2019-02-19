@@ -9,9 +9,17 @@ function reverse(string) {
 function Phrase(content) {
   this.content = content;
 
+  // Returns the letters in the content.
+  // For example:
+  //   new Phrase("Hello, world!").letters() === "Helloworld"
+  
+  this.letters = function letters() {
+    return Array.from(this.content).filter(c => c.match(/[a-z]/i)).join("");
+  }
+
   // Returns content processed for palindrome testing.
   this.processedContent = function processedContent() {
-    return this.content.toLowerCase();
+    return this.letters().toLowerCase();
   }
 
   // Returns true if the phrase is a palindrome, false otherwise.
